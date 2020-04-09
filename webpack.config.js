@@ -61,6 +61,7 @@ module.exports = {
     port: 4700,
     hot: isDevelop,
   },
+  devtool: isDevelop ? 'source-map' : '',
   module: {
     rules: [
       {
