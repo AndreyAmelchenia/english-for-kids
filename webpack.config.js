@@ -27,7 +27,7 @@ const optimization = () => {
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    script: './script/script.js',
+    script: ['@babel/polyfill', './script/script.js'],
   },
   output: {
     filename: '[name].js',
@@ -68,6 +68,18 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+            ],
+          },
+        },
       },
       {
         test: /\.css$/,

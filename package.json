@@ -9,8 +9,8 @@
     "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
     "server": "cross-env NODE_ENV=development webpack-dev-server --mode development",
     "style": "sass --watch src/style/main.scss src/style/style.css"
-
   },
+  "browserslist": "> 0.25%, not dead",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AndreyAmelchenia/english-for-kids.git"
@@ -27,6 +27,9 @@
   },
   "homepage": "https://github.com/AndreyAmelchenia/english-for-kids#readme",
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "cross-env": "^7.0.2",
@@ -48,6 +51,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.8.7",
     "normalize.css": "^8.0.1"
   }
 }
