@@ -83,6 +83,20 @@ module.exports = {
         ],
       },
       {
+        test: /\.s[ac]ss$/,
+        loader: [
+          {
+            loader: MiniCss.loader,
+            options: {
+              hmr: isDevelop,
+              reloadAll: true,
+            },
+          },
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+      {
         test: /\.(png|jpg|svg|gif)$/,
         loader: 'file-loader',
       },
