@@ -1,0 +1,12 @@
+@import "~normalize.css";
+
+.container{
+  width: 1000px;
+  height: 200px;
+  background: rgb(161, 104, 104);
+}
+.my{
+  font-size: 40px;
+  margin: 0 auto;
+  text-align: center;
+}
