@@ -24,21 +24,14 @@ const optimization = () => {
   return config;
 };
 
-module.exports = {
-  context: path.resolve(__dirname, 'src'),
+const indexConfig = {
   entry: {
-    script: ['@babel/polyfill', './script/script.js'],
+    index: './script/index.js',
   },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
-  optimization: optimization(),
-  // resolve: {
-  //   alias: {
-  //     '@style': path.resolve(__dirname, 'src/style'),
-  //   },
-  // },
   plugins: [
     new Html({
       template: './index.html',
@@ -57,6 +50,40 @@ module.exports = {
       filename: 'style.css',
     }),
   ],
+};
+
+const categoriesConfig = {
+  entry: {
+    categories: './script/categories.js',
+  },
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist/pages'),
+  },
+  plugins: [
+    new Html({
+      filename: 'categories.html',
+      template: './pages/categories.html',
+      minify: {
+        collapseWhitespace: isProduct,
+      },
+    }),
+    new CleanWebpackPlugin(),
+    new Copy([
+      {
+        from: path.resolve(__dirname, 'src/assets/'),
+        to: path.resolve(__dirname, 'dist/assets/'),
+      },
+    ]),
+    new MiniCss({
+      filename: 'categories.css',
+    }),
+  ],
+};
+
+const common = {
+  context: path.resolve(__dirname, 'src'),
+  optimization: optimization(),
   devServer: {
     port: 4700,
     hot: isDevelop,
@@ -64,24 +91,12 @@ module.exports = {
   devtool: isDevelop ? 'source-map' : '',
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              '@babel/preset-env',
-            ],
-          },
-        },
-      },
+      // {
+      //   enforce: 'pre',
+      //   test: /\.js$/,
+      //   exclude: /node_modules/,
+      //   loader: 'eslint-loader',
+      // },
       {
         test: /\.css$/,
         loader: [
@@ -96,20 +111,6 @@ module.exports = {
         ],
       },
       {
-        test: /\.s[ac]ss$/,
-        loader: [
-          {
-            loader: MiniCss.loader,
-            options: {
-              hmr: isDevelop,
-              reloadAll: true,
-            },
-          },
-          'css-loader',
-          'sass-loader',
-        ],
-      },
-      {
         test: /\.(png|jpg|svg|gif)$/,
         loader: 'file-loader',
       },
@@ -120,3 +121,11 @@ module.exports = {
     ],
   },
 };
+
+module.exports = [{
+  ...common,
+  ...indexConfig,
+}, {
+  ...common,
+  ...categoriesConfig,
+}];

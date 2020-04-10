@@ -1,14 +1,18 @@
-.container{
+@import "~normalize.css";
+.container {
   width: 1000px;
   height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(161, 104, 104);
+  background: #a16868;
 }
-.my{
+
+.my {
   font-size: 60px;
   margin: 0 auto;
   text-align: center;
-  color: rgb(4, 14, 58);
+  color: #040e3a;
 }
+
+/*# sourceMappingURL=categories.css.map */
