@@ -1,9 +1,12 @@
 .container{
-  width: 1000px;
-  height: 200px;
+  top: 100px;
+  position: relative;
+  max-width: calc(300px * 3 + 60px);
+  height: calc(300px * 3 + 60px);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  align-content: flex-start;
+  flex-wrap: wrap;
   background: rgb(161, 104, 104);
 }
 .my{

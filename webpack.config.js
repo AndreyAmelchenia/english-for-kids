@@ -98,7 +98,7 @@ const common = {
       //   loader: 'eslint-loader',
       // },
       {
-        test: /\.css$/,
+        test: /\.s[ac]ss$/,
         loader: [
           {
             loader: MiniCss.loader,
@@ -108,6 +108,7 @@ const common = {
             },
           },
           'css-loader',
+          'sass-loader',
         ],
       },
       {

@@ -1,9 +1,9 @@
 class Navigation {
   constructor() {
-    this.nav = document.querySelector('.nav');
-    this.navTrigger = document.querySelector('.nav__trigger');
-    this.navContent = document.querySelector('.nav__content');
-    this.navList = document.querySelector('.nav__list');
+    this.nav = document.querySelector('.header__nav');
+    this.navTrigger = document.querySelector('.header__nav__trigger');
+    this.navContent = document.querySelector('.header__nav__content');
+    this.navList = document.querySelector('.header__nav__list');
   }
 
   init() {

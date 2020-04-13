@@ -1,0 +1,101 @@
+
+#card-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.card {
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  transition: .6s ease-in-out;
+  border-radius: 10px;
+  box-shadow: 0 10px 5px 0 rgba(0, 0, 0, 0.3);
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  &__img {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    object-fit: cover;
+  }
+  &__translate{
+    width: 86%;
+    padding: 10px;
+    background: rgba(106, 28, 145, 0.4);
+    border-radius: 10px;
+    top: 180px;
+    position: absolute;
+    & p {
+      margin: 0;
+      text-align: center;
+      font-family: 'Cabin';
+      font-size: 10pt;
+      font-weight: bold;
+      letter-spacing: 0.1rem;
+      color: white;
+    }
+  }
+}
+
+.card-front {
+  background: white;
+  z-index: 2;
+  
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: #8bd7d3;
+  z-index: 1;
+ 
+}
+
+// #card-wrapper:hover 
+.card-front_rotate {
+  transform: rotateY(180deg);
+}
+
+// #card-wrapper:hover 
+.card-back_rotate {
+  transform: rotateY(0deg);
+  z-index: 3;
+}
+
+#tip {
+  position: relative;
+    top: 250px;
+}
+
+#tip .arrow {
+  position: relative;
+  width: 0;
+  left: 50%;
+  margin-bottom: -1px;
+  transform: translateX(-50%);
+  border-style: solid;
+  border-width: 0px 15px 10px 15px;
+  border-color: transparent transparent #8bd7d3 transparent;
+}
+
+#tip .section {
+  padding: 10px;
+  background: #8bd7d3;
+  border-radius: 10px;
+}
+
+#tip .section p {
+  margin: 0;
+  text-align: center;
+  font-family: 'Cabin';
+  font-size: 8pt;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  color: white;
+} 
