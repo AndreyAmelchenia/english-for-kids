@@ -7,7 +7,7 @@ class CreateCard {
   }
 
   createElem() {
-    const elem = `<div id="card-wrapper">
+    const elem = `<div id="card-wrapper" class="card-wrapper">
                     <div class="card card-front">
                         <img class="card__img" src=${this.image} alt="front.png">
                     </div>
@@ -17,11 +17,22 @@ class CreateCard {
                         <p>${this.translation}</p>
                       </div>
                     </div>
-                    <div id="tip">
+                    <div id="tip" class="tip">
                       <div class="arrow"></div>
                       <div class="section">
                         <p>${this.word}</p>
+                        <img class="rotate" src="../assets/img/rotate.svg" alt="rotate.svg">
                       </div>
+                    </div>
+                    <audio id="sound" src=${this.sound}></audio>
+                  </div>`;
+    return elem;
+  }
+
+  createElemPlay() {
+    const elem = `<div id="card-wrapper" class="card-wrapper">
+                    <div class="card card-front">
+                        <img class="card__img" src=${this.image} alt="front.png">
                     </div>
                   </div>`;
     return elem;

@@ -27,7 +27,7 @@ a {
 .header{
     z-index: 9;
     position: fixed;
-    max-width: 63.75rem;
+    max-width: calc(300px * 3 + 60px);
     width: 100vw;
 
 }
