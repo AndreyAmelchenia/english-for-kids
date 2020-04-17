@@ -32,6 +32,7 @@ class CreateCategory {
     this.categories.forEach((elem) => {
       this.listMenu.innerHTML += `<li class="header__nav__item"><a href="${this.link}pages/categories.html">${elem.categoryName}</a></li>`;
     });
+    this.listMenu.innerHTML += `<li class="header__nav__item"><a href="${this.link}pages/categories.html">Statistic</a></li>`;
   }
 
   createCategoriesPage() {
@@ -61,27 +62,16 @@ class CreateCategory {
       });
     }
   }
+
+  createGood() {
+    this.container.innerHTML = '';
+    this.container.innerHTML = '<img class="rotate" src="../assets/img/success.jpg" alt="">';
+  }
+
+  createError(error) {
+    this.container.innerHTML = '';
+    this.container.innerHTML = `<h1 class="h1">${error} ERROR</h1><img class="rotate" src="../assets/img/failure.jpg" alt="">`;
+  }
 }
-
-// function shuffle(array) {
-//   let currentIndex = array.length;
-//   let temporaryValue = array.length;
-//   let randomIndex = array.length;
-//   // temporaryValue, randomIndex;
-
-//   // While there remain elements to shuffle...
-//   while (currentIndex !== 0) {
-//     // Pick a remaining element...
-//     randomIndex = Math.floor(Math.random() * currentIndex);
-//     currentIndex -= 1;
-
-//     // And swap it with the current element.
-//     temporaryValue = array[currentIndex];
-//     array[currentIndex] = array[randomIndex];
-//     array[randomIndex] = temporaryValue;
-//   }
-
-//   return array;
-// }
 
 export default CreateCategory;

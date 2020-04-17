@@ -1,3 +1,5 @@
+// import Play from '../Module/Play';
+
 const eventCategory = () => {
   document.querySelectorAll('.card-front').forEach((el) => {
     el.addEventListener('click', (event) => {
@@ -29,6 +31,12 @@ const eventCardEnd = () => {
       document.querySelectorAll('.card-back').forEach((elem) => {
         elem.classList.remove('card-back_rotate');
       });
+      document.querySelectorAll('.section > img').forEach((elem) => {
+        if (elem.classList.contains('rotate_no')) {
+          elem.classList.add('rotate');
+          elem.classList.remove('rotate_no');
+        }
+      });
       document.querySelectorAll('.card-front').forEach((elem) => {
         elem.classList.remove('card-front_rotate');
       });
@@ -36,9 +44,46 @@ const eventCardEnd = () => {
   });
 };
 
-const eventCard = () => {
+const eventCard = (category, obj) => {
+  const cat = {};
+  let i = 0;
+  let j = 0;
+  cat.category = category;
+  cat.word = [];
+  obj.category.forEach((el) => {
+    cat.word.push({
+      word: el.word,
+      col: 0,
+    });
+  });
   document.querySelectorAll('.section > img').forEach((el) => {
     el.addEventListener('click', (event) => {
+      if (event.target.classList.contains('rotate')) {
+        // eslint-disable-next-line no-console
+        console.log(event.target.classList);
+        cat.word.forEach((elem) => {
+          if (elem.word === event.target.offsetParent.offsetParent.firstElementChild.dataset.name) {
+            j = i;
+            return;
+          }
+          i += 1;
+        });
+        // eslint-disable-next-line no-console
+        console.log(j);
+        cat.word[j].col += 1;
+        i = 0;
+      }
+      // obj.word.push({
+      //   word: event.target.offsetParent.offsetParent.firstElementChild.dataset.name,
+      //   col: i,
+      // });
+      // i += 1;
+      // eslint-disable-next-line no-console
+      console.log(category);
+      // eslint-disable-next-line no-console
+      console.log(cat);
+      event.target.classList.add('rotate_no');
+      event.target.classList.remove('rotate');
       event.target.offsetParent.offsetParent.firstElementChild.classList.add('card-front_rotate');
       event.target.offsetParent.offsetParent.firstElementChild.nextElementSibling.classList.add('card-back_rotate');
       eventCardEnd();
@@ -51,28 +96,35 @@ const eventSoundCard = () => {
     el.addEventListener('click', (event) => {
       if (!event.target.classList.contains('rotate')
       && !event.target.classList.contains('tip')
-      && !event.target.classList.contains('card-wrapper')) {
+      && !event.target.classList.contains('card-wrapper')
+      && !event.target.classList.contains('rotate_no')) {
         event.target.offsetParent.offsetParent.querySelector('#sound').play();
       }
     });
   });
 };
 
-const eventCheckBox = (reload, ...args) => {
+const eventCheckBox = (reload, play, ...args) => {
   const check = document.querySelector('#doggle');
   check.addEventListener('click', () => {
     if (check.checked) {
       const state = 'play';
       localStorage.setItem('state', state);
-      reload.createCategory(state);
-      // eslint-disable-next-line no-console
+      // const play = new Play(reload, state);
+      play.statePlay(state);
+      play.createPlay();
+      play.playArr();
+      play.eventButton();
+      // reload.createCategory(state);
       args.forEach((el) => el());
     } else {
       const state = 'train';
       localStorage.setItem('state', state);
       reload.createCategory(state);
-      // eslint-disable-next-line no-console
+      eventSoundCard();
+      eventCard();
       args.forEach((el) => el());
+      document.querySelector('.footer').innerHTML = '';
     }
   });
 };

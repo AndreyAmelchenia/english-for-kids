@@ -6,7 +6,7 @@ import {
   eventCategoryMenu,
   eventCheckBox,
   stateCheckBox,
-} from './function/event';
+} from './function/events';
 
 const state = stateCheckBox();
 eventCheckBox();

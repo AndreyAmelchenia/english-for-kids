@@ -8,7 +8,7 @@ class CreateCard {
 
   createElem() {
     const elem = `<div id="card-wrapper" class="card-wrapper">
-                    <div class="card card-front">
+                    <div data-name="${this.word}" class="card card-front">
                         <img class="card__img" src=${this.image} alt="front.png">
                     </div>
                     <div class="card card-back">
@@ -32,7 +32,7 @@ class CreateCard {
   createElemPlay() {
     const elem = `<div id="card-wrapper" class="card-wrapper">
                     <div class="card card-front">
-                        <img class="card__img" src=${this.image} alt="front.png">
+                        <img class="card__img" data-name="${this.word}" src=${this.image} alt="front.png">
                     </div>
                   </div>`;
     return elem;

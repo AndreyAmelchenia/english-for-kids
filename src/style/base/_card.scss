@@ -25,6 +25,13 @@
     position: relative;
     object-fit: cover;
   }
+  &__inactive{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    object-fit: cover;
+    opacity: .5;
+  }
   &__translate{
     width: 86%;
     padding: 10px;
