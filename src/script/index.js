@@ -6,6 +6,7 @@ import {
   eventCategoryMenu,
   eventCheckBox,
   stateCheckBox,
+  reLoad,
 } from './function/events';
 
 const state = stateCheckBox();
@@ -14,6 +15,7 @@ eventCheckBox();
 console.log(state);
 const categoriesPage = new CreateCategory(state);
 const navigation = new Navigation();
+const reload = reLoad();
 
 categoriesPage.createCategoriesPage();
 categoriesPage.createCategoriesMenu();
@@ -22,3 +24,4 @@ navigation.init();
 
 eventCategory();
 eventCategoryMenu();
+localStorage.setItem('reload', reload);
