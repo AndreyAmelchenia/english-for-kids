@@ -299,6 +299,106 @@ const cardsBase = [
       audioSrc: '../assets/audio/laugh.mp3',
     },
   ],
+  [
+    {
+      word: 'apple',
+      translation: 'яблоко',
+      image: '../assets/img/apple.jpg',
+      audioSrc: '../assets/audio/apple.mp3',
+    },
+    {
+      word: 'peach',
+      translation: 'персик',
+      image: '../assets/img/peach.jpg',
+      audioSrc: '../assets/audio/peach.mp3',
+    },
+    {
+      word: 'pineapple',
+      translation: 'ананас',
+      image: '../assets/img/pineapple.jpg',
+      audioSrc: '../assets/audio/pineapple.mp3',
+    },
+    {
+      word: 'banana',
+      translation: 'банан',
+      image: '../assets/img/banana.jpg',
+      audioSrc: '../assets/audio/banana.mp3',
+    },
+    {
+      word: 'strawberry',
+      translation: 'клубника',
+      image: '../assets/img/strawberry.jpg',
+      audioSrc: '../assets/audio/strawberry.mp3',
+    },
+    {
+      word: 'pear',
+      translation: 'груша',
+      image: '../assets/img/pear.jpg',
+      audioSrc: '../assets/audio/pear.mp3',
+    },
+    {
+      word: 'watermelon',
+      translation: 'арбуз',
+      image: '../assets/img/watermelon.jpg',
+      audioSrc: '../assets/audio/watermelon.mp3',
+    },
+    {
+      word: 'cherry',
+      translation: 'вишня',
+      image: '../assets/img/cherry.jpg',
+      audioSrc: '../assets/audio/cherry.mp3',
+    },
+  ],
+  [
+    {
+      word: 'potato',
+      translation: 'картофель',
+      image: '../assets/img/potato.jpg',
+      audioSrc: '../assets/audio/potato.mp3',
+    },
+    {
+      word: 'cabbage',
+      translation: 'капуста',
+      image: '../assets/img/cabbage.jpg',
+      audioSrc: '../assets/audio/cabbage.mp3',
+    },
+    {
+      word: 'onion',
+      translation: 'лук',
+      image: '../assets/img/onion.jpg',
+      audioSrc: '../assets/audio/onion.mp3',
+    },
+    {
+      word: 'cucumber',
+      translation: 'огурец',
+      image: '../assets/img/cucumber.jpg',
+      audioSrc: '../assets/audio/cucumber.mp3',
+    },
+    {
+      word: 'tomato',
+      translation: 'помидор',
+      image: '../assets/img/tomato.jpg',
+      audioSrc: '../assets/audio/tomato.mp3',
+    },
+    {
+      word: 'eggplant',
+      translation: 'баклажан',
+      image: '../assets/img/eggplant.jpg',
+      audioSrc: '../assets/audio/eggplant.mp3',
+    },
+    {
+      word: 'pumpkin',
+      translation: 'тыква',
+      image: '../assets/img/pumpkin.jpg',
+      audioSrc: '../assets/audio/pumpkin.mp3',
+    },
+    {
+      word: 'radish',
+      translation: 'редиска',
+      image: '../assets/img/radish.jpg',
+      audioSrc: '../assets/audio/radish.mp3',
+    },
+  ],
 ];
 
 export { cardsBase as default };

@@ -24,7 +24,7 @@ class CreateCard {
                         <img class="rotate" src="../assets/img/rotate.svg" alt="rotate.svg">
                       </div>
                     </div>
-                    <audio id="sound" src=${this.sound}></audio>
+                    <audio id="sound" src=${this.sound}>${this.word}</audio>
                   </div>`;
     return elem;
   }

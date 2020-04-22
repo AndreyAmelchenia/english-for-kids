@@ -5,10 +5,10 @@ class Category {
   }
 
   createElem() {
-    const elem = `<a href="./pages/categories.html"><div id="card-wrapper">
-                    <div class="card card-front">
-                      <img class="card__img" src=${this.image} alt="front.png">
-                      <div class="card__translate">
+    const elem = `<a href="./pages/categories.html"><div id="category-wrapper">
+                    <div class="category category-front">
+                      <img class="category__img" src=${this.image} alt="front.png">
+                      <div class="category__name">
                         <p>${this.categoryName}</p>
                       </div>
                     </div>

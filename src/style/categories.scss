@@ -1,7 +1,22 @@
+@font-face{
+  font-family: 'Roboto';
+  src: url("../assets/fonts/Roboto-Regular.ttf") format("truetype");
+};
+@font-face{
+  font-family: 'Comic';
+  src: url("../assets/fonts/Comic.ttf") format("truetype");
+};
+
+@font-face{
+  font-family: 'ComicNeue';
+  src: url("../assets/fonts/ComicNeue-Regular.ttf") format("truetype");
+};
 @import "~normalize.css";
 @import "abstract/constants";
+@import "abstract/mixes";
 @import "base/base";
 @import "base/card";
+@import "base/statistic";
 
 @import "layouts/header";
 @import "base/check";

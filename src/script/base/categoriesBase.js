@@ -1,27 +1,35 @@
 const categoriesBase = [
   {
-    image: 'assets/img/cry.jpg',
+    image: 'assets/img/dance.jpg',
     categoryName: 'Action (set A)',
   },
   {
-    image: 'assets/img/dance.jpg',
+    image: 'assets/img/play.jpg',
     categoryName: 'Action (set B)',
   },
   {
-    image: 'assets/img/dive.jpg',
+    image: 'assets/img/chick.jpg',
     categoryName: 'Animal (set A)',
   },
   {
-    image: 'assets/img/draw.jpg',
+    image: 'assets/img/lion.jpg',
     categoryName: 'Animal (set B)',
   },
   {
-    image: 'assets/img/fish.jpg',
+    image: 'assets/img/dress.jpg',
     categoryName: 'Clothes',
   },
   {
-    image: 'assets/img/fly.jpg',
+    image: 'assets/img/sad.jpg',
     categoryName: 'Emotions',
+  },
+  {
+    image: 'assets/img/fruits.jpg',
+    categoryName: 'Fruits',
+  },
+  {
+    image: 'assets/img/vegetables.jpg',
+    categoryName: 'Vegetables',
   },
 ];
 

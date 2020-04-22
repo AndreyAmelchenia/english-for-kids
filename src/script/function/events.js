@@ -1,9 +1,9 @@
-// import Play from '../Module/Play';
 
 const eventCategory = () => {
-  document.querySelectorAll('.card-front').forEach((el) => {
+  const linkPage = document.querySelectorAll('.category-front');
+  linkPage.forEach((el) => {
     el.addEventListener('click', (event) => {
-      if (event.target.classList.contains('card__img')) {
+      if (event.target.classList.contains('category__img')) {
         const category = event.target.nextElementSibling.innerText;
         localStorage.setItem('category', category);
       } else {
@@ -15,8 +15,8 @@ const eventCategory = () => {
 };
 
 const eventCategoryMenu = () => {
-  const menu = document.querySelectorAll('.header__nav__item > a');
-  menu.forEach((el) => {
+  const menuNav = document.querySelectorAll('.header__nav__item > a');
+  menuNav.forEach((el) => {
     el.addEventListener('click', (event) => {
       localStorage.setItem('reload', 'off');
       const category = event.target.innerText;
@@ -44,74 +44,17 @@ const eventCardEnd = () => {
   });
 };
 
-const statistic = (category, obj) => {
+const statistic = (category) => {
   let statisticTrain = [];
-  let stat = '';
-  let choice = false;
+  // let choice = false;
   let i = 0;
-  // const translate = [];
-  // const base = [];
-  if (localStorage.getItem('statistic')) {
-    stat = localStorage.getItem('statistic');
-    statisticTrain = JSON.parse(stat);
+  if (localStorage.getItem('statisticTrain')) {
+    statisticTrain = JSON.parse(localStorage.getItem('statisticTrain'));
     statisticTrain.forEach((elem, index) => {
       if (elem.catTrain === category) {
         i = index;
-        choice = true;
       }
     });
-    if (!choice) {
-      const { length } = statisticTrain;
-      statisticTrain.push({
-        catTrain: category,
-        word: [],
-        translate: [],
-        base: [],
-      });
-      obj.category.forEach((el) => {
-        statisticTrain[length].word.push({
-          word: el.word,
-          col: 0,
-        });
-        statisticTrain[length].translate.push({
-          word: el.word,
-          translate: el.translation,
-          col: 0,
-        });
-        statisticTrain[length].base.push({
-          img: el.image,
-          audioSrc: el.audioSrc,
-          col: 0,
-        });
-      });
-      stat = JSON.stringify(statisticTrain);
-      localStorage.setItem('statistic', stat);
-    }
-  } else {
-    statisticTrain.push({
-      catTrain: category,
-      word: [],
-      translate: [],
-      base: [],
-    });
-    obj.category.forEach((el) => {
-      statisticTrain[0].word.push({
-        word: el.word,
-        col: 0,
-      });
-      statisticTrain[0].translate.push({
-        word: el.word,
-        translate: el.translation,
-        col: 0,
-      });
-      statisticTrain[0].base.push({
-        img: el.image,
-        audioSrc: el.audioSrc,
-        col: 0,
-      });
-    });
-    stat = JSON.stringify(statisticTrain);
-    localStorage.setItem('statistic', stat);
   }
   return {
     obj: statisticTrain,
@@ -119,11 +62,12 @@ const statistic = (category, obj) => {
   };
 };
 
-const eventCard = (category, obj) => {
+
+const eventCard = (category) => {
   let i = 0;
   document.querySelectorAll('.section > img').forEach((el) => {
     el.addEventListener('click', (event) => {
-      const stat = statistic(category, obj);
+      const stat = statistic(category);
       if (event.target.classList.contains('rotate')) {
         stat.obj[stat.number].translate.every((elem, index) => {
           if (elem.word === event.target.offsetParent.offsetParent.firstElementChild.dataset.name) {
@@ -133,7 +77,7 @@ const eventCard = (category, obj) => {
           return true;
         });
         stat.obj[stat.number].translate[i].col += 1;
-        localStorage.setItem('statistic', JSON.stringify(stat.obj));
+        localStorage.setItem('statisticTrain', JSON.stringify(stat.obj));
       }
       event.target.classList.add('rotate_no');
       event.target.classList.remove('rotate');
@@ -144,48 +88,81 @@ const eventCard = (category, obj) => {
   });
 };
 
-const eventSoundCard = () => {
+const eventSoundCard = (category) => {
+  let i = 0;
   document.querySelectorAll('#card-wrapper').forEach((el) => {
     el.addEventListener('click', (event) => {
       if (!event.target.classList.contains('rotate')
       && !event.target.classList.contains('tip')
       && !event.target.classList.contains('card-wrapper')
       && !event.target.classList.contains('rotate_no')) {
-        event.target.offsetParent.offsetParent.querySelector('#sound').play();
-        // //// work fix
-        // success.addEventListener('ended', () => {
-        //   if (success.duration === success.currentTime) {
-        //     const reload = 'off';
-        //     localStorage.setItem('reload', reload);
-        //     document.location.href = '../';
-        //   }
-        // });
+        const sound = event.target.offsetParent.offsetParent.querySelector('#sound');
+        sound.play();
+        const stat = statistic(category);
+        stat.obj[stat.number].word.every((elem, index) => {
+          if (elem.word === sound.innerHTML) {
+            i = index;
+            return false;
+          }
+          return true;
+        });
+        stat.obj[stat.number].word[i].col += 1;
+        localStorage.setItem('statisticTrain', JSON.stringify(stat.obj));
       }
     });
   });
 };
 
-const eventCheckBox = (reload, play, ...args) => {
+const eventCheckBox = (reload, play, category, wordRepeat) => {
+  const check = document.querySelector('#doggle');
+  check.addEventListener('click', () => {
+    if (check.checked) {
+      // const statPlay = statisticPlay(category);
+      // statPlay.obj[statPlay.number].col += 1;
+      // localStorage.setItem('statisticPlay', JSON.stringify(statPlay.obj));
+      const state = 'play';
+      localStorage.setItem('state', state);
+      if (wordRepeat) {
+        play.statePlay(state);
+        play.createPlay(wordRepeat);
+        play.playArr(wordRepeat);
+        play.eventButton();
+      } else {
+        play.statePlay(state);
+        play.createPlay();
+        play.playArr();
+        play.eventButton();
+      }
+    } else {
+      const state = 'train';
+      localStorage.setItem('state', state);
+      if (wordRepeat) {
+        reload.createCategory(state, wordRepeat);
+        eventSoundCard();
+        eventCard();
+        document.querySelector('.footer').innerHTML = '';
+      } else {
+        const stat = statistic(category);
+        stat.obj[stat.number].col += 1;
+        localStorage.setItem('statisticTrain', JSON.stringify(stat.obj));
+        reload.createCategory(state);
+        eventSoundCard();
+        eventCard();
+        document.querySelector('.footer').innerHTML = '';
+      }
+    }
+  });
+};
+
+const eventCheckBoxIndex = () => {
   const check = document.querySelector('#doggle');
   check.addEventListener('click', () => {
     if (check.checked) {
       const state = 'play';
       localStorage.setItem('state', state);
-      // const play = new Play(reload, state);
-      play.statePlay(state);
-      play.createPlay();
-      play.playArr();
-      play.eventButton();
-      // reload.createCategory(state);
-      args.forEach((el) => el());
     } else {
       const state = 'train';
       localStorage.setItem('state', state);
-      reload.createCategory(state);
-      eventSoundCard();
-      eventCard();
-      args.forEach((el) => el());
-      document.querySelector('.footer').innerHTML = '';
     }
   });
 };
@@ -216,12 +193,15 @@ const reLoad = () => {
   }
   return reload;
 };
+
 export {
   eventCategory,
   eventCategoryMenu,
   eventCard,
   eventSoundCard,
   eventCheckBox,
+  statistic,
   stateCheckBox,
   reLoad,
+  eventCheckBoxIndex,
 };

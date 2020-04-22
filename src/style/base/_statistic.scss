@@ -1,0 +1,196 @@
+.container__button{
+  display: flex;
+  width: 100%;
+  height: 100px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  & button{
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 32%;
+    height: 40%;
+    vertical-align: middle;
+    text-align: center;
+    text-shadow: 0 -1px 1px #777;
+    font-family: 'ComicNeue';
+    font-weight: bold;
+    color: #0e022e;
+    outline: none;
+    font-size: 18px;
+    @include media-tablet {
+      font-size: 3vw;
+    }
+    @include media-mobile {
+      font-size: 88%;
+    }
+    border: 2px solid #075d50;
+    border-radius: 5px;
+    box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #032722;
+    background: linear-gradient(#0aaa92, #0b9581 48%, #09665a 52%, #075d50);
+    &:active {
+      top: .1em;
+      left: .1em;
+      box-shadow: 0 0 0 60px rgba(0,0,0,.05) inset;
+    }
+    &:hover{
+      box-shadow: 5px 5px 5px 60px rgba(0,0,0,0.3) inset, .1em .1em .2em #032722;
+    }
+    // background-color: #0aaa92;
+    // color: #076571;
+    // font-size: 80%;
+    // border-radius: 5px;
+    // height: 40px;
+  }
+}
+
+.container__statistic{
+  display: flex;
+  flex-wrap: wrap;
+}
+.container__sort{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.container__sort > button{
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: 30%;
+  height: 2em;
+  vertical-align: middle;
+  text-align: center;
+  font-family: 'ComicNeue';
+  font-weight: bold;
+  text-shadow: 0 -1px 1px #777;
+  color: #aee0c3;
+  outline: none;
+  font-size: 18px;
+    @include media-tablet {
+      font-size: 3vw;
+    }
+    @include media-mobile {
+      font-size: 88%;
+    }
+  border: 2px solid #075d50;
+  border-radius: 5px;
+  box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #032722;
+  background: linear-gradient(#9faa0a, #95870b 48%, #663e09 52%, #5d2e07);
+  &:active {
+    top: .1em;
+    left: .1em;
+    box-shadow: 0 0 0 60px rgba(0,0,0,.05) inset;
+  }
+  &:hover{
+    box-shadow: 5px 5px 5px 60px rgba(0,0,0,0.3) inset, .1em .1em .2em #032722;
+  }
+}
+
+.grid-container {
+  width: 100%;
+  height: 90px;
+  display: grid;
+  // border: 2px solid rgb(78, 92, 144);
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1.3fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  margin: 10px;
+  &_word{
+    width: calc(50% - 20px);
+    height: 180px;
+    display: grid;
+    // border: 2px solid rgb(78, 92, 144);
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 1px 1px;
+    margin: 10px;
+    & div{
+      background-color: $grid;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      @include media-tablet {
+        font-size: 2.5vw;
+      }
+      @include media-mobile {
+        font-size: 88%;
+      }
+      font-family: 'Roboto';
+      box-sizing: border-box;
+      // border: 1px solid rgb(78, 92, 144);
+    }
+  }
+}
+.grid-container > div {
+  background-color: $grid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+      @include media-tablet {
+        font-size: 2.5vw;
+      }
+      @include media-mobile {
+        font-size: 88%;
+      }
+  font-family: 'Roboto';
+  box-sizing: border-box;
+  // border: 1px solid rgb(78, 92, 144);
+}
+.category { 
+  padding-left: 20px;
+  font-weight: bold;
+  grid-area: 1 / 1 /span 1 / span 5; 
+}
+
+.quantity { 
+  text-align: center;
+  font-weight: bold;
+  grid-area: 1 / 6 /span 1 / span 4;
+  &_error{
+    text-align: center;
+    font-weight: bold;
+    grid-area: 1 / 6 /span 1 / span 2;
+  }
+  &_correct{
+    text-align: center;
+    font-weight: bold;
+    grid-area: 1 / 8 /span 1 / span 2;
+  }
+}
+
+
+
+.wordEn { 
+  grid-area:  3 / 1 /span 1 / span 1;
+  &_play{
+    grid-area:  2 / 1 /span 1 / span 1;
+  } 
+}
+
+.error_name,
+.translationRu { 
+  grid-area:  4 / 1 /span 1 / span 1; 
+}
+
+.correct_name { 
+  grid-area:  3 / 1 /span 1 / span 1; 
+}
+.word { 
+  text-align: center; 
+}
+.sound { 
+  text-align: center; 
+}
+.correct { 
+  text-align: center; 
+}
+.error { 
+  text-align: center; 
+}
+.trans {
+  text-align: center;
+ }

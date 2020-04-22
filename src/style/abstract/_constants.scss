@@ -1,0 +1,33 @@
+// Header
+$primary: #9ac6ac;
+$primary-ultralight: mix(white, $primary, 80%);
+$primary-light: mix(white, $primary, 25%);
+$primary-dark: mix(black, $primary, 25%);
+$primary-ultradark: mix(black, $primary, 80%);
+$black: #222222;
+$white: #eeeeee;
+$grid: lightsteelblue;
+
+$ease-in-out-cubic: cubic-bezier(0.645,  0.045, 0.355, 1.000);
+$cubic-transition: 0.55s $ease-in-out-cubic;
+
+$bar-length: 40px;
+$bar-thickness: 6px;
+$nav-item-delay: 0.05s;
+$nav-width: 3.75rem;
+
+//  Check
+$text-before: #fff;
+$text-after: #749ED7;
+$face-before: #AEB8D1;
+$face-after: #679DFF;
+$face-details-before: #5B6F8F;
+$face-details-after: rgba(0,33,71,1);
+$tongue: red;
+
+// footer
+$off: #EB2C59;
+$on: #21E76E;
+$full-width: 1024px;
+$tablet-width: 768px;
+$mobile-width: 375px;
